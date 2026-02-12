@@ -21,14 +21,25 @@ int main() {
     float total = 0;
 
     for (int i = 0; i < n; i++) {
-        printf("Enter name, address, age and salary of employee %d: ", i + 1);
-        scanf("%s %s %d %f", employees[i].name, employees[i].address, 
-              &employees[i].age, &employees[i].salary);
+        printf("\n\nFor Employee: %d\n\n", i+1);
+
+        printf("Enter name: ");
+        scanf("%s", &employees[i].name);
+
+        printf("Enter address: ");
+        scanf("%s", &employees[i].address);
+
+        printf("Enter age: ");
+        scanf("%d", &employees[i].age);
+        
+        printf("Enter salary: ");
+        scanf("%f", &employees[i].salary);
+
         total += employees[i].salary;
     }
 
     float average = total / n;
-    printf("Average Salary: %.2f\n", average);
+    printf("\n\nAverage Salary: %.2f\n", average);
 
     return 0;
 }

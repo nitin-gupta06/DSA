@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-char toLowerCase(char ch){
+char lower(char ch){
     if(ch >= 'A' && ch <= 'Z'){
         return ch + 32;
     }
@@ -15,7 +15,7 @@ int main(){
     scanf("%[^\n]s", str);
 
     for(int i = 0; str[i] != '\0'; i++){
-        str[i] = toLowerCase(str[i]);
+        str[i] = lower(str[i]);
     }
 
     printf("Lowercase string: %s", str);
