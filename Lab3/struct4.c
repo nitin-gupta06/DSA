@@ -17,11 +17,12 @@ int main() {
     int i, j;
 
     for(i = 0; i < 5; i++) {
+        printf("\n\nDetails of Employee %d\n", i+1);
         printf("Enter name: ");
-        scanf("%s", emp[i].name);
+        scanf(" %[^\n]s", emp[i].name);
 
         printf("Enter address: ");
-        scanf("%s", emp[i].address);
+        scanf(" %[^\n]s", emp[i].address);
 
         printf("Enter salary: ");
         scanf("%f", &emp[i].salary);

@@ -24,7 +24,7 @@ int main() {
     struct employee emp;
 
     printf("Enter employee name: ");
-    scanf("%s", emp.name);
+    scanf(" %[^\n]s", emp.name);
 
     printf("Enter employee ID: ");
     scanf("%d", &emp.id);

@@ -24,10 +24,10 @@ int main() {
         printf("\n\nFor Employee: %d\n\n", i+1);
 
         printf("Enter name: ");
-        scanf("%s", &employees[i].name);
+        scanf(" %[^\n]s", employees[i].name);
 
         printf("Enter address: ");
-        scanf("%s", &employees[i].address);
+        scanf(" %[^\n]s", employees[i].address);
 
         printf("Enter age: ");
         scanf("%d", &employees[i].age);
