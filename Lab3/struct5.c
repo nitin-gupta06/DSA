@@ -23,7 +23,6 @@ struct employee {
 int main() {
     struct employee emp;
 
-    // Read employee details
     printf("Enter employee name: ");
     scanf("%s", emp.name);
 

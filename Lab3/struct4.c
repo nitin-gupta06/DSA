@@ -13,17 +13,34 @@ struct employee {
 };
 
 int main() {
-    struct employee employees[5];
-    
-    for (int i = 0; i < 5; i++) {
-        printf("Enter name of employee %d: ", i + 1);
-       
+    struct employee emp[5], temp;
+    int i, j;
 
+    for(i = 0; i < 5; i++) {
+        printf("Enter name: ");
+        scanf("%s", emp[i].name);
+
+        printf("Enter address: ");
+        scanf("%s", emp[i].address);
+
+        printf("Enter salary: ");
+        scanf("%f", &emp[i].salary);
+    }
+
+    for(i = 0; i < 4; i++) {
+        for(j = i + 1; j < 5; j++) {
+            if(strcmp(emp[i].name, emp[j].name) > 0) {
+                temp = emp[i];
+                emp[i] = emp[j];
+                emp[j] = temp;
+            }
+        }
+    }
     printf("\nEmployees in alphabetical order:\n");
-    for (int i = 0; i < 5; i++) {
-        printf("Name: %s", employees[i].name);
-        printf("Address: %s", employees[i].address);
-        printf("Salary: %.2f\n", employees[i].salary);
+    for(i = 0; i < 5; i++) {
+        printf("\nName: %s", emp[i].name);
+        printf("\nAddress: %s", emp[i].address);
+        printf("\nSalary: %.2f\n", emp[i].salary);
     }
 
     return 0;
