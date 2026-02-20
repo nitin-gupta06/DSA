@@ -38,7 +38,10 @@ int main() {
         }
     }
 
-    
+    printf("\nStudents in ascending order of roll number:\n");
+    for (int i = 0; i < 5; i++) {
+        printf("Roll No: %d, Name: %s %s\n", students[i].roll_no, students[i].fname, students[i].lname);
+    }
 
     return 0;
 }

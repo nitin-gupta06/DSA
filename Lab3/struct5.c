@@ -39,7 +39,7 @@ int main() {
     printf("Name: %s\n", emp.name);
     printf("ID: %d\n", emp.id);
     printf("Salary: %.2f\n", emp.salary);
-    printf("Date of Birth: %02d/%02d/%04d\n", emp.dob.day, emp.dob.month, emp.dob.year);
+    printf("Date of Birth: %d/%d/%d\n", emp.dob.day, emp.dob.month, emp.dob.year);
 
     return 0;
 }

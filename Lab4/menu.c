@@ -25,6 +25,8 @@ struct node *start = NULL;
 void create(){
     struct node *temp, *ptr;
     temp=(struct node *)malloc(sizeof(struct node));
+    printf("Size of temp: %lu\n", sizeof(temp));
+    
     if (temp==NULL){
         printf("\nOut of memory. exiting\n");
         exit(0);
@@ -41,11 +43,27 @@ void create(){
         }
         ptr->next=temp;
     }
-
+        printf("\n-----------------------------------------------------------------\n\n");
 }
 
 void insert_begg(){
     printf("Inserting at the beginning of the linked list\n");
+    struct node *temp;
+    temp=(struct node *)malloc(sizeof(struct node));
+    if (temp==NULL){
+        printf("\nOut of memory. exiting\n");
+        exit(0);
+    }
+    printf("Enter the data values for node: ");
+    scanf("%d", &temp->info);
+    temp->next=NULL;
+    if(start==NULL){
+        start=temp;
+    } else {
+        temp->next=start;
+        start=temp;
+    }
+    printf("\n-----------------------------------------------------------------\n\n");
 
 
 
@@ -53,7 +71,25 @@ void insert_begg(){
 
 void insert_end(){
     printf("Inserting at the end of the linked list\n");
-
+    struct node *temp, *ptr;
+    temp=(struct node *)malloc(sizeof(struct node));
+    if (temp==NULL){
+        printf("\nOut of memory. exiting\n");
+        exit(0);
+    }
+    printf("Enter the data values for node: ");
+    scanf("%d", &temp->info);
+    temp->next=NULL;
+    if(start==NULL){
+        start=temp;
+    } else {
+        ptr=start;
+        while(ptr->next!=NULL){
+            ptr=ptr->next;
+        }
+        ptr->next=temp;
+    }
+    printf("\n-----------------------------------------------------------------\n\n");
 
 }
 
@@ -102,9 +138,11 @@ void traverse(){
     }else{
         ptr=start;
         printf("List Elements: \n");
+        int i = 1;
         while(ptr!=NULL){
-            printf("%d\n", ptr->info);
+            printf("%d. %d\n", i, ptr->info);
             ptr=ptr->next;
+            i++;
         }
         printf("-----------------------------------------------------------------");
     }
@@ -137,6 +175,9 @@ int main(){
         printf("Enter an option from [0-12]: ");
         int choice;
         scanf("%d", &choice);
+
+        printf("\n-----------------------------------------------------------------\n\n");
+
         switch(choice){
             case 0:
                 create();
@@ -181,6 +222,8 @@ int main(){
                 printf("Invalid option. Please try again.\n");
         }
     } while(1);
+
+
 
     return 0;
 }
