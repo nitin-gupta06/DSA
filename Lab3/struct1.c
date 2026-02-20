@@ -19,6 +19,7 @@ int main() {
     printf("Enter name: ");
     scanf("%[^\n]s", &s.name);
 
+
     printf("Enter roll number: ");
     scanf("%d", &s.roll_no);
 
