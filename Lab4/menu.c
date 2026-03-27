@@ -210,7 +210,6 @@ void reverse(){
         prev = curr;
         curr = next;
     }
-
     start = prev;
     printf("List reversed\n");
 }
