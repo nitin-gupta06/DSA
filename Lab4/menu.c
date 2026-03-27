@@ -20,53 +20,46 @@ struct node {
     int info;
     struct node *next;
 };
+
 struct node *start = NULL;
+
+int getCount(struct node *start){
+    int count = 0;
+    struct node *temp = start;
+    while(temp != NULL){
+        count++;
+        temp = temp->next;
+    }
+    return count;
+}
 
 void create(){
     struct node *temp, *ptr;
-    temp=(struct node *)malloc(sizeof(struct node));
-    printf("Size of temp: %lu\n", sizeof(temp));
-    
-    if (temp==NULL){
-        printf("\nOut of memory. exiting\n");
-        exit(0);
-    }
-    printf("Enter the data values for node: ");
+
+    temp = (struct node*)malloc(sizeof(struct node));
+    printf("Enter value: ");
     scanf("%d", &temp->info);
-    temp->next=NULL;
-    if(start==NULL){
-        start=temp;
+    temp->next = NULL;
+
+    if(start == NULL){
+        start = temp;
     } else {
-        ptr=start;
-        while(ptr->next!=NULL){
-            ptr=ptr->next;
-        }
-        ptr->next=temp;
+        ptr = start;
+        while(ptr->next != NULL)
+            ptr = ptr->next;
+        ptr->next = temp;
     }
-        printf("\n-----------------------------------------------------------------\n\n");
 }
 
-void insert_begg(){
-    printf("Inserting at the beginning of the linked list\n");
+void insert_begin(){
     struct node *temp;
-    temp=(struct node *)malloc(sizeof(struct node));
-    if (temp==NULL){
-        printf("\nOut of memory. exiting\n");
-        exit(0);
-    }
-    printf("Enter the data values for node: ");
+
+    temp = (struct node*)malloc(sizeof(struct node));
+    printf("Enter value: ");
     scanf("%d", &temp->info);
-    temp->next=NULL;
-    if(start==NULL){
-        start=temp;
-    } else {
-        temp->next=start;
-        start=temp;
-    }
-    printf("\n-----------------------------------------------------------------\n\n");
 
-
-
+    temp->next = start;
+    start = temp;
 }
 
 void insert_end(){
@@ -90,70 +83,207 @@ void insert_end(){
         ptr->next=temp;
     }
     printf("\n-----------------------------------------------------------------\n\n");
-
 }
 
 void insert_pos(){
-    printf("Inserting at the given position of the linked list\n");
+    int pos, i;
+    printf("Enter position: ");
+    scanf("%d", &pos);
 
+    int count = getCount(start);
+
+    if(pos < 0 || pos > count){
+        printf("Invalid position\n");
+        return;
+    }
+
+    if(pos == 0){
+        insert_begin();
+        return;
+    }
+
+    struct node *temp, *ptr = start;
+
+    temp = (struct node*)malloc(sizeof(struct node));
+    printf("Enter value: ");
+    scanf("%d", &temp->info);
+
+    for(i = 0; i < pos - 1; i++)
+        ptr = ptr->next;
+
+    temp->next = ptr->next;
+    ptr->next = temp;
 }
 
-void delete_begg(){
-    printf("Deleting from the beginning of the linked list\n");
+void delete_begin(){
+    if(start == NULL){
+        printf("List empty\n");
+        return;
+    }
 
+    struct node *temp = start;
+    start = start->next;
+
+    printf("Deleted: %d\n", temp->info);
+    free(temp);
 }
 
 void delete_end(){
-    printf("Deleting from the end of the linked list\n");
+    if(start == NULL){
+        printf("List empty\n");
+        return;
+    }
 
+    struct node *ptr = start, *prev;
+
+    if(start->next == NULL){
+        printf("Deleted: %d\n", start->info);
+        free(start);
+        start = NULL;
+        return;
+    }
+
+    while(ptr->next != NULL){
+        prev = ptr;
+        ptr = ptr->next;
+    }
+
+    prev->next = NULL;
+    printf("Deleted: %d\n", ptr->info);
+    free(ptr);
 }
 
 void delete_pos(){
-    printf("Deleting from the given position of the linked list\n");
+    int pos, i;
+    printf("Enter position: ");
+    scanf("%d", &pos);
 
+    int count = getCount(start);
+
+    if(pos < 0 || pos >= count){
+        printf("Invalid position\n");
+        return;
+    }
+
+    struct node *ptr = start, *prev;
+
+    if(pos == 0){
+        delete_begin();
+        return;
+    }
+
+    for(i = 0; i < pos; i++){
+        prev = ptr;
+        ptr = ptr->next;
+    }
+
+    prev->next = ptr->next;
+    printf("Deleted: %d\n", ptr->info);
+    free(ptr);
 }
 
 void search(){
-    printf("Searching an element in a given linked list\n");
+    int key, pos = 0;
+    printf("Enter value to search: ");
+    scanf("%d", &key);
 
+    struct node *temp = start;
+
+    while(temp != NULL){
+        if(temp->info == key){
+            printf("Found at position %d\n", pos);
+            return;
+        }
+        pos++;
+        temp = temp->next;
+    }
+
+    printf("Not found\n");
 }
 
 void reverse(){
-    printf("Reversing a linked list\n");
+    struct node *prev = NULL, *curr = start, *next;
 
+    while(curr != NULL){
+        next = curr->next;
+        curr->next = prev;
+        prev = curr;
+        curr = next;
+    }
+
+    start = prev;
+    printf("List reversed\n");
 }
 
 void merge(){
-    printf("Merging two linked list\n");
+    struct node *start2 = NULL, *temp, *ptr;
+    int n, val;
 
+    printf("Enter number of elements in second list: ");
+    scanf("%d", &n);
+
+    for(int i = 0; i < n; i++){
+        temp = (struct node*)malloc(sizeof(struct node));
+        printf("Enter value: ");
+        scanf("%d", &temp->info);
+        temp->next = NULL;
+
+        if(start2 == NULL){
+            start2 = temp;
+        } else {
+            ptr = start2;
+            while(ptr->next != NULL)
+                ptr = ptr->next;
+            ptr->next = temp;
+        }
+    }
+
+    if(start == NULL){
+        start = start2;
+        return;
+    }
+
+    ptr = start;
+    while(ptr->next != NULL)
+        ptr = ptr->next;
+
+    ptr->next = start2;
+
+    printf("Lists merged\n");
 }
 
 void traverse(){
-    printf("\n\nTraversing/ Display of linked list\n\n");
+    struct node *ptr = start;
 
-    struct node *ptr;
-    if (start==NULL){
-        printf("\nList is empty!\n");
+    if(ptr == NULL){
+        printf("List empty\n");
         return;
-    }else{
-        ptr=start;
-        printf("List Elements: \n");
-        int i = 1;
-        while(ptr!=NULL){
-            printf("%d. %d\n", i, ptr->info);
-            ptr=ptr->next;
-            i++;
-        }
-        printf("-----------------------------------------------------------------");
     }
+
+    printf("List:\n");
+    while(ptr != NULL){
+        printf("%d -> ", ptr->info);
+        ptr = ptr->next;
+    }
+    printf("NULL\n");
 }
+
 
 void detect_loop(){
-    printf("Detecting loop in a linked list\n");
+    struct node *slow = start, *fast = start;
 
+    while(fast != NULL && fast->next != NULL){
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if(slow == fast){
+            printf("Loop detected\n");
+            return;
+        }
+    }
+
+    printf("No loop\n");
 }
-
-
 
 int main(){
     do{
