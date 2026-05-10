@@ -1,6 +1,6 @@
 /*
 1) Create a structure named student that has name, roll no. and mark as members.
-Assume an appropriate types and size of member. 
+Assume an appropriate types and size of member.
 Write a program using structure to read and display the data entered by the user.
 */
 

@@ -1,114 +1,93 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void insertion(){
+void insertion() {
     printf("\nInsertion of Element\n\n");
-
     int n;
     printf("Enter size of array: ");
     scanf("%d", &n);
-
-    int arr[n+1];
-
+    int arr[n + 1];
     printf("Enter %d elements:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-
     int pos;
-    printf("Enter the position where you want to insert the element [0-%d]: ", n-1);
+    printf("Enter the position where you want to insert the element [0-%d]: ", n - 1);
     scanf("%d", &pos);
-
-    if(pos<0 || pos >n+1){
+    if (pos < 0 || pos > n + 1) {
         printf("Invalid position");
         return;
     }
-
     int ele;
     printf("Enter the element: ");
     scanf("%d", &ele);
-
     for (int i = n; i >= pos; i--) {
         arr[i] = arr[i - 1];
     }
-
-    arr[pos] = ele ;
-    for (int i = 0 ; i < n +1  ; i++){
-        printf("%d ",arr[i]);
+    arr[pos] = ele;
+    for (int i = 0; i < n + 1; i++) {
+        printf("%d ", arr[i]);
     }
 }
 
-void delete(){
+void delete() {
     printf("\nDeletion of Element\n\n");
-    int n ;
+    int n;
     printf("Enter the Size of Array: ");
-    scanf("%d",&n);
-
-    int arr[n-1];
-
+    scanf("%d", &n);
+    int arr[n - 1];
     printf("Enter the Elements: ");
-    for (int i = 0 ; i < n ; i++){
-        scanf("%d",&arr[i]);
+    for (int i = 0; i < n; i++) {
+        scanf("%d", &arr[i]);
     }
-
-    int z , m = 0 ;
+    int z, m = 0;
     printf("Enter the Element u want to  delete: ");
-    scanf("%d",&z);
-
-    for (int i = 0 ; i < n ; i++){
-        if(arr[i] == z){
+    scanf("%d", &z);
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == z) {
             m++;
         }
-        if(m > 0){
-            arr[i] = arr[i+1];
+        if (m > 0) {
+            arr[i] = arr[i + 1];
         }
     }
-
-    if( m == 0 ){
+    if (m == 0) {
         printf("No Element Found");
+    } else {
+        for (int i = 0; i < n - 1; i++) {
+            printf("%d ", arr[i]);
+        }
     }
-    else{
-        for (int i = 0 ; i < n - 1 ; i++){
-        printf("%d ",arr[i]);
-    }
-
-    }
-
 }
 
-void linear(){
+void linear() {
     printf("\nLinear Search\n\n");
-
-    int n, search, result=0;
+    int n, search, result = 0;
     printf("Enter size of array: ");
     scanf("%d", &n);
     int arr[n];
     printf("Enter %d elements:\n", n);
-
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-
     printf("Enter the number to search: ");
     scanf("%d", &search);
-
-    for(int i=0; i < n; i++){
-        if (arr[i] == search){
+    for (int i = 0; i < n; i++) {
+        if (arr[i] == search) {
             result = 1;
             break;
         }
     }
-    if(result){ 
+    if (result) {
         printf("Found");
     } else {
         printf("Not Found");
     }
 }
 
-void binary(){
+void binary() {
     printf("\nBinary Search\n\n");
-
-    int n, search, result=0;
+    int n, search, result = 0;
     printf("Enter size of array: ");
     scanf("%d", &n);
     int arr[n];
@@ -116,50 +95,44 @@ void binary(){
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-
-    int l=0, h=n-1;
+    int l = 0, h = n - 1;
     printf("Enter the number to search: ");
     scanf("%d", &search);
-    while (l<=h){
-        int mid = (l+h)/2;
-        
-        if(search==arr[mid]){
+    while (l <= h) {
+        int mid = (l + h) / 2;
+
+        if (search == arr[mid]) {
             result = 1;
             break;
-        }
-        else if(search>arr[mid]){
+        } else if (search > arr[mid]) {
             l = mid + 1;
-        }
-        else{
+        } else {
             h = mid - 1;
         }
     }
-    if(result){ 
+    if (result) {
         printf("Found");
     } else {
         printf("Not Found");
     }
 }
 
-void bubble(){
+void bubble() {
     printf("\nBubble Sort\n\n");
-
     int n;
     printf("Enter size of array: ");
     scanf("%d", &n);
-
     int arr[n];
     printf("Enter %d elements:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-
-    for (int i = 0; i < n; i++){
-        for (int j = 0; j < n; j++){
-            if (arr[j] > arr[j+1]){
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < n; j++) {
+            if (arr[j] > arr[j + 1]) {
                 int temp = arr[j];
-                arr[j] = arr[j+1];
-                arr[j+1] = temp;
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
             }
         }
     }
@@ -169,38 +142,35 @@ void bubble(){
     }
 }
 
-void selection(){
+void selection() {
     printf("\nSelection Sort\n\n");
-
     int n;
     printf("Enter size of array: ");
     scanf("%d", &n);
-
     int arr[n];
     printf("Enter %d elements:\n", n);
     for (int i = 0; i < n; i++) {
         scanf("%d", &arr[i]);
     }
-
-    for(int i = 0; i < n-1; i++){
+    for (int i = 0; i < n - 1; i++) {
         int min = i;
-        for(int j = i+1; j < n; j++){
-            if(arr[j] < arr[min]){
+        for (int j = i + 1; j < n; j++) {
+            if (arr[j] < arr[min]) {
                 min = j;
             }
         }
         int temp = arr[i];
         arr[i] = arr[min];
-        arr[min] = temp;        
+        arr[min] = temp;
     }
     printf("Sorted array:\n");
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         printf("%d ", arr[i]);
     }
 }
 
-int main(){
-    do{
+int main() {
+    do {
         printf("1. Insertion at desired location\n");
         printf("2. Delete an element from the desired location\n");
         printf("3. Search an element using Linear Search\n");
@@ -210,13 +180,13 @@ int main(){
         int c;
         printf("Choose an option [1-6]: ");
         scanf("%d", &c);
-    switch(c){
+        switch (c) {
         case 1:
             insertion();
             break;
         case 2:
             delete();
-            break; 
+            break;
         case 3:
             linear();
             break;
@@ -225,7 +195,7 @@ int main(){
             break;
         case 5:
             bubble();
-            break;  
+            break;
         case 6:
             selection();
             break;
@@ -234,9 +204,8 @@ int main(){
         default:
             printf("Invalid option");
             break;
-    }
+        }
+    } while (1);
 
-    } while(1);
-    
     return 0;
 }

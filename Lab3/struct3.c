@@ -21,7 +21,7 @@ int main() {
     float total = 0;
 
     for (int i = 0; i < n; i++) {
-        printf("\n\nFor Employee: %d\n\n", i+1);
+        printf("\n\nFor Employee: %d\n\n", i + 1);
 
         printf("Enter name: ");
         scanf(" %[^\n]s", employees[i].name);
@@ -31,7 +31,7 @@ int main() {
 
         printf("Enter age: ");
         scanf("%d", &employees[i].age);
-        
+
         printf("Enter salary: ");
         scanf("%f", &employees[i].salary);
 

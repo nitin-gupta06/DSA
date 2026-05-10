@@ -3,21 +3,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int sum_recursion(int arr[], int n){
-    if(n <= 0)
+int sum_recursion(int arr[], int n) {
+    if (n <= 0)
         return 0;
-    return arr[n-1] + sum_recursion(arr, n-1);
+    return arr[n - 1] + sum_recursion(arr, n - 1);
 }
 
-int sum_iteration(int arr[], int n){
+int sum_iteration(int arr[], int n) {
     int sum = 0;
-    for(int i = 0; i < n; i++){
+    for (int i = 0; i < n; i++) {
         sum += arr[i];
     }
     return sum;
 }
 
-int main(){
+int main() {
     int n;
     printf("Enter size of array: ");
     scanf("%d", &n);
@@ -32,7 +32,7 @@ int main(){
     printf("Choose method to calculate sum:\n1. Iteration\n2. Recursion\n3. Exit\n");
     scanf("%d", &c);
 
-    switch (c){
+    switch (c) {
     case 1:
         printf("Sum of all elements: %d\n", sum_iteration(arr, n));
         break;

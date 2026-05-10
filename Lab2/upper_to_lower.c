@@ -2,22 +2,20 @@
 
 #include <stdio.h>
 
-char lower(char ch){
-    if(ch >= 'A' && ch <= 'Z'){
+char lower(char ch) {
+    if (ch >= 'A' && ch <= 'Z') {
         return ch + 32;
     }
     return ch;
 }
 
-int main(){
+int main() {
     char str[100];
     printf("Enter a string in uppercase: ");
     scanf("%[^\n]s", str);
-
-    for(int i = 0; str[i] != '\0'; i++){
+    for (int i = 0; str[i] != '\0'; i++) {
         str[i] = lower(str[i]);
     }
-
     printf("Lowercase string: %s", str);
     return 0;
 }

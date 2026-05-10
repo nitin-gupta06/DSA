@@ -16,8 +16,8 @@ int main() {
     struct employee emp[5], temp;
     int i, j;
 
-    for(i = 0; i < 5; i++) {
-        printf("\n\nDetails of Employee %d\n", i+1);
+    for (i = 0; i < 5; i++) {
+        printf("\n\nDetails of Employee %d\n", i + 1);
         printf("Enter name: ");
         scanf(" %[^\n]s", emp[i].name);
 
@@ -28,9 +28,9 @@ int main() {
         scanf("%f", &emp[i].salary);
     }
 
-    for(i = 0; i < 4; i++) {
-        for(j = i + 1; j < 5; j++) {
-            if(strcmp(emp[i].name, emp[j].name) > 0) {
+    for (i = 0; i < 4; i++) {
+        for (j = i + 1; j < 5; j++) {
+            if (strcmp(emp[i].name, emp[j].name) > 0) {
                 temp = emp[i];
                 emp[i] = emp[j];
                 emp[j] = temp;
@@ -38,7 +38,7 @@ int main() {
         }
     }
     printf("\nEmployees in alphabetical order:\n");
-    for(i = 0; i < 5; i++) {
+    for (i = 0; i < 5; i++) {
         printf("\nName: %s", emp[i].name);
         printf("\nAddress: %s", emp[i].address);
         printf("\nSalary: %.2f\n", emp[i].salary);
